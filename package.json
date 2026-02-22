@@ -1,0 +1,29 @@
+{
+  "name": "claude-setup",
+  "version": "0.1.0",
+  "description": "Interactive CLI for configuring Claude Code MCP servers and plugins per project",
+  "type": "module",
+  "bin": {
+    "claude-setup": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@inkjs/ui": "^2.0.0",
+    "ink": "^5.1.0",
+    "meow": "^13.0.0",
+    "react": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.6.0"
+  }
+}
