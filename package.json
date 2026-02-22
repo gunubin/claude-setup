@@ -1,12 +1,12 @@
 {
-  "name": "@gunubin/claude-setup",
+  "name": "@gunubin/cc-pick",
   "version": "0.1.0",
   "description": "Interactive CLI for configuring Claude Code MCP servers and plugins per project",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gunubin/claude-setup.git"
+    "url": "https://github.com/gunubin/cc-pick.git"
   },
   "keywords": [
     "claude-code",
@@ -18,7 +18,7 @@
     "access": "public"
   },
   "bin": {
-    "claude-setup": "./dist/cli.js"
+    "cc-pick": "./dist/cli.js"
   },
   "files": [
     "dist"

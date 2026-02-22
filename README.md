@@ -1,25 +1,25 @@
-# claude-setup
+# cc-pick
 
-[![npm version](https://img.shields.io/npm/v/@gunubin/claude-setup)](https://www.npmjs.com/package/@gunubin/claude-setup)
-[![license](https://img.shields.io/npm/l/@gunubin/claude-setup)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/@gunubin/cc-pick)](https://www.npmjs.com/package/@gunubin/cc-pick)
+[![license](https://img.shields.io/npm/l/@gunubin/cc-pick)](./LICENSE)
 
 Interactive CLI for configuring Claude Code MCP servers and plugins per project.
 
 ## Install
 
 ```bash
-npm install -g @gunubin/claude-setup
+npm install -g @gunubin/cc-pick
 # or run directly
-npx @gunubin/claude-setup
+npx @gunubin/cc-pick
 ```
 
 ## Usage
 
 ```bash
-claude-setup              # MCP + plugins
-claude-setup --mcp        # MCP servers only
-claude-setup --plugins    # Plugins only
-claude-setup --list       # Show current config
+cc-pick              # MCP + plugins
+cc-pick --mcp        # MCP servers only
+cc-pick --plugins    # Plugins only
+cc-pick --list       # Show current config
 ```
 
 ## MCP Presets
@@ -42,7 +42,7 @@ Place JSON files in `~/.config/claude/mcp-presets/`. The filename (without `.jso
 }
 ```
 
-- `_meta` is metadata used only by claude-setup (not written to `.mcp.json`)
+- `_meta` is metadata used only by cc-pick (not written to `.mcp.json`)
 - `requiredEnvVars` triggers an environment variable check in the UI
 - Everything outside `_meta` is written directly to `.mcp.json`
 

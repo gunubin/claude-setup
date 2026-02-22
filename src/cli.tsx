@@ -9,10 +9,10 @@ import { listCurrentConfig } from "./lib/settings.js";
 const cli = meow(
   `
   Usage
-    $ claude-setup              MCP + plugins
-    $ claude-setup --mcp        MCP servers only
-    $ claude-setup --plugins    Plugins only
-    $ claude-setup --list       Show current config
+    $ cc-pick              MCP + plugins
+    $ cc-pick --mcp        MCP servers only
+    $ cc-pick --plugins    Plugins only
+    $ cc-pick --list       Show current config
 `,
   {
     importMeta: import.meta,
