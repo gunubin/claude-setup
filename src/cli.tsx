@@ -1,3 +1,5 @@
+import * as fs from "node:fs";
+import * as tty from "node:tty";
 import meow from "meow";
 import React from "react";
 import { render } from "ink";
@@ -33,4 +35,14 @@ const mode = cli.flags.mcp
     ? "plugins"
     : "both";
 
-render(<App mode={mode as "mcp" | "plugins" | "both"} />);
+// process.stdin が TTY でない場合（tmux popup の fish -c 経由など）、
+// /dev/tty を直接開いて TTY stdin を確保する
+let stdinStream: NodeJS.ReadableStream = process.stdin;
+if (!process.stdin.isTTY) {
+  const fd = fs.openSync("/dev/tty", "r");
+  stdinStream = new tty.ReadStream(fd);
+}
+
+render(<App mode={mode as "mcp" | "plugins" | "both"} />, {
+  stdin: stdinStream,
+});

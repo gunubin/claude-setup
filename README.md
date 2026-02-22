@@ -2,14 +2,66 @@
 
 Interactive CLI for configuring Claude Code MCP servers and plugins per project.
 
+## Install
+
+```bash
+npm install -g @gunubin/claude-setup
+# or run directly
+npx @gunubin/claude-setup
+```
+
 ## Usage
 
 ```bash
-npx claude-setup              # MCP + plugins
-npx claude-setup --mcp        # MCP servers only
-npx claude-setup --plugins    # Plugins only
-npx claude-setup --list       # Show current config
+claude-setup              # MCP + plugins
+claude-setup --mcp        # MCP servers only
+claude-setup --plugins    # Plugins only
+claude-setup --list       # Show current config
 ```
+
+## MCP Presets
+
+Place JSON files in `~/.config/claude/mcp-presets/`. The filename (without `.json`) becomes the preset name.
+
+```json
+{
+  "_meta": {
+    "description": "Short description of the MCP server",
+    "tags": ["tag1", "tag2"],
+    "requiredEnvVars": ["API_KEY"]
+  },
+  "type": "stdio",
+  "command": "npx",
+  "args": ["some-mcp-server@latest"],
+  "env": {
+    "API_KEY": "${API_KEY}"
+  }
+}
+```
+
+- `_meta` is metadata used only by claude-setup (not written to `.mcp.json`)
+- `requiredEnvVars` triggers an environment variable check in the UI
+- Everything outside `_meta` is written directly to `.mcp.json`
+
+## Key Bindings
+
+### Selection
+
+| Key | Action |
+|-----|--------|
+| `↑` / `k` | Move up |
+| `↓` / `j` | Move down |
+| `Space` | Toggle item |
+| `Tab` | Switch pane (MCP / Plugins) |
+| `Enter` | Confirm |
+| `q` | Quit |
+
+### Confirmation
+
+| Key | Action |
+|-----|--------|
+| `y` / `Enter` | Apply changes |
+| `n` / `Esc` | Cancel |
 
 ## Data Sources
 
@@ -21,10 +73,6 @@ npx claude-setup --list       # Show current config
 | Global plugin settings | `~/.claude/settings.json` |
 | Project plugin settings | `.claude/settings.json` |
 
-## Development
+## License
 
-```bash
-npm install
-npm run build
-node dist/cli.js
-```
+MIT
