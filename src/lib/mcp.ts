@@ -58,6 +58,7 @@ export function loadCurrentMcp(): string[] {
 
 export function writeMcpJson(selectedNames: string[], presets: McpPreset[]) {
   const mcpPath = path.resolve(".mcp.json");
+  const fileExists = fs.existsSync(mcpPath);
 
   let existing: Record<string, unknown> = {};
   try {
@@ -81,6 +82,10 @@ export function writeMcpJson(selectedNames: string[], presets: McpPreset[]) {
     if (preset) {
       mcpServers[name] = preset.config;
     }
+  }
+
+  if (!fileExists && Object.keys(mcpServers).length === 0) {
+    return;
   }
 
   fs.writeFileSync(mcpPath, JSON.stringify({ mcpServers }, null, 2) + "\n");

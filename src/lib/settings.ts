@@ -13,9 +13,10 @@ export function writeProjectPlugins(
   allPlugins: PluginInfo[],
 ) {
   const settingsPath = path.resolve(".claude", "settings.json");
+  const fileExists = fs.existsSync(settingsPath);
 
   let settings: Record<string, unknown> = {};
-  if (fs.existsSync(settingsPath)) {
+  if (fileExists) {
     try {
       settings = JSON.parse(fs.readFileSync(settingsPath, "utf-8"));
     } catch {
@@ -39,6 +40,10 @@ export function writeProjectPlugins(
     settings.enabledPlugins = enabledPlugins;
   } else {
     delete settings.enabledPlugins;
+  }
+
+  if (!fileExists && Object.keys(settings).length === 0) {
+    return;
   }
 
   // Ensure .claude/ directory exists
